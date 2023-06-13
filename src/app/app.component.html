@@ -1,0 +1,137 @@
+<nav>
+  <button (click)="cycleSorting()" [title]="currentSorting">
+    {{ currentSorting }} Movies
+  </button>
+  <button (click)="showFilters = !showFilters">Show Filters</button>
+  <button (click)="showUsers = !showUsers">Show Users</button>
+</nav>
+
+<!-- Start of showUsers button and contents -->
+<div *ngIf="showUsers">
+  <h2>Here are the users we have:</h2>
+  <table class="table table-striped">
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.password }}</td>
+        <td>{{ user.role }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<!-- End of showUsers button and contents -->
+
+<!-- Start of showFilters button and contents -->
+<div *ngIf="showFilters">
+  <label>
+    <input type="checkbox" [(ngModel)]="showGenreFilter" /> Genres
+  </label>
+  <input *ngIf="showGenreFilter" type="text" placeholder="Search Genres..." />
+  <label>
+    <input type="checkbox" [(ngModel)]="showCompanyFilter" /> Production
+    Companies
+  </label>
+  <input
+    *ngIf="showCompanyFilter"
+    type="text"
+    placeholder="Search Companies..."
+  />
+  <label>
+    <input type="checkbox" [(ngModel)]="showYearFilter" /> Release Year
+  </label>
+  <input *ngIf="showYearFilter" type="text" placeholder="Search Years..." />
+  <label>
+    <input type="checkbox" [(ngModel)]="showRatingFilter" /> Rating
+  </label>
+  <input *ngIf="showRatingFilter" type="text" placeholder="Search Ratings..." />
+  <label>
+    <input type="checkbox" [(ngModel)]="showRevenueFilter" /> Revenue
+  </label>
+  <input
+    *ngIf="showRevenueFilter"
+    type="text"
+    placeholder="Search Revenue..."
+  />
+  <label>
+    <input type="checkbox" [(ngModel)]="showRuntimeFilter" /> Runtime
+  </label>
+  <input
+    *ngIf="showRuntimeFilter"
+    type="text"
+    placeholder="Search Runtime..."
+  />
+  <label>
+    <input type="checkbox" [(ngModel)]="showVoteCountFilter" /> Vote Count
+  </label>
+  <input
+    *ngIf="showVoteCountFilter"
+    type="text"
+    placeholder="Search Vote Count..."
+  />
+  <label>
+    <input type="checkbox" [(ngModel)]="showVoteAverageFilter" /> Vote Average
+  </label>
+  <input
+    *ngIf="showVoteAverageFilter"
+    type="text"
+    placeholder="Search Vote Average..."
+  />
+  <label>
+    <input type="checkbox" [(ngModel)]="showPopularityFilter" /> Popularity
+  </label>
+  <input
+    *ngIf="showPopularityFilter"
+    type="text"
+    placeholder="Search Popularity..."
+  />
+</div>
+<!-- End of showFilters button and contents -->
+
+<h1>Welcome to {{ title }}!</h1>
+<form
+  class="titleSearch"
+  action="/action_page.php"
+  style="margin: auto; max-width: 300px"
+>
+  <input
+    type="text"
+    placeholder="Title Search.."
+    name="titleSearch"
+    [(ngModel)]="titleSearch"
+  />
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+<h2>Here are the movies we have:</h2>
+<table class="table table-striped">
+  <tbody>
+    <tr *ngFor="let movie of filteredMoviesByTitle | slice : 0 : 10">
+      <td>
+        <a
+          href="{{ movie.homepage }}"
+          routerLink="/movie-page"
+          title="{{ movie.overview }}"
+          >{{ movie.original_title }}</a
+        >
+      </td>
+      <td>{{ movie.id }}</td>
+      <td>{{ movie.popularity }}</td>
+      <td>{{ movie.budget }}</td>
+      <td>{{ movie.revenue }}</td>
+      <td>{{ movie.cast }}</td>
+      <td>{{ movie.homepage }}</td>
+      <td>{{ movie.director }}</td>
+      <td>{{ movie.overview }}</td>
+      <td>{{ movie.genres }}</td>
+      <td>{{ movie.production_companies }}</td>
+      <td>{{ movie.release_year }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<router-outlet></router-outlet>
+```
