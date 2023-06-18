@@ -46,37 +46,37 @@ namespace MovieList.Controllers
             return Ok(movie);
         }
 
-        // PUT: api/Movies/5
-        [HttpPut("{id}")]
-        [EnableCors("AllowAllHeaders")]
-        public async Task<IActionResult> PutMovie([FromRoute] int id, [FromBody] Movie movie)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-            if (id != movie.Id)
-            {
-                return BadRequest();
-            }
-            _context.Entry(movie).State = EntityState.Modified;
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!MovieExists(id))
-                {
-                return NotFound();
-                }
-                else
-                {
-                throw;
-                }
-            }
-            return NoContent();
-        }
+        // // PUT: api/Movies/5
+        // [HttpPut("{id}")]
+        // [EnableCors("AllowAllHeaders")]
+        // public async Task<IActionResult> PutMovie([FromRoute] int id, [FromBody] Movie movie)
+        // {
+        //     if (!ModelState.IsValid)
+        //     {
+        //         return BadRequest(ModelState);
+        //     }
+        //     if (id != movie.Id)
+        //     {
+        //         return BadRequest();
+        //     }
+        //     _context.Entry(movie).State = EntityState.Modified;
+        //     try
+        //     {
+        //         await _context.SaveChangesAsync();
+        //     }
+        //     catch (DbUpdateConcurrencyException)
+        //     {
+        //         if (!MovieExists(id))
+        //         {
+        //         return NotFound();
+        //         }
+        //         else
+        //         {
+        //         throw;
+        //         }
+        //     }
+        //     return NoContent();
+        // }
 
         // POST: api/Movies
         [HttpPost]

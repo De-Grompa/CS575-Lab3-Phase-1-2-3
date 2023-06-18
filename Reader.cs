@@ -1,6 +1,7 @@
 using CsvHelper;
 using System.IO;
 using System.Globalization;
+using MovieList.Model;
 
 public class Reader
 {

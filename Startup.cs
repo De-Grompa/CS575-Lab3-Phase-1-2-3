@@ -13,7 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace MoviesList
+namespace MovieList
 {
     public class Startup
     {
@@ -28,7 +28,7 @@ namespace MoviesList
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<MovieContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("heroContext")));
+                    options.UseSqlServer(Configuration.GetConnectionString("movieContext")));
 
             //CORS error No 'Access-Control-Allow-Origin' header
             services.AddCors(options =>

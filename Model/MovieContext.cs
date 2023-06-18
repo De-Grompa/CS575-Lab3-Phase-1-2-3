@@ -13,6 +13,6 @@ namespace MovieList.Model
             : base(options)
         {
         }
-        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Movie>? Movies { get; set; }
     }
 }
