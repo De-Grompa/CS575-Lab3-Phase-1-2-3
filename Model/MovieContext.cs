@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Movies.Model;
+using MovieList.Model;
 
-namespace Movies.Model
+namespace MovieList.Model
 {
     public class MovieContext : DbContext
     {

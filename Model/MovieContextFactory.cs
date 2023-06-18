@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Movie.Model
+namespace MovieList.Model
 {
     public class MovieContextFactory : IDesignTimeDbContextFactory<MovieContext>
     {

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
-using Movie.Model;
+using MovieList.Model;
 using Microsoft.AspNetCore.Cors;
 
-namespace Movies.Controllers
+namespace MovieList.Controllers
 {
     [Route("api/[controller]")]
     [EnableCors("AllowAllHeaders")]
@@ -26,7 +26,7 @@ namespace Movies.Controllers
         [EnableCors("AllowAllHeaders")]
         public IEnumerable<Movie> GetMovies()
         {
-            return _context.Movies;
+            return (IEnumerable<Movie>)_context.Movies;
         }
 
         // GET: api/Movies/5
