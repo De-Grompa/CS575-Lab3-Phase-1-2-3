@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ReadCsvService } from './read-csv.service';
 import { Movie } from './movie.model';
 import { InMemoryDataService } from './in-memory-data.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -160,7 +161,7 @@ export class AppComponent {
   }
   // End filter by popularity
 
-  constructor(private readCsvService: ReadCsvService, private inMemoryDataService: InMemoryDataService) {}
+  constructor(private readCsvService: ReadCsvService, private inMemoryDataService: InMemoryDataService, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.readCsvService.getMovies().subscribe(movies => {
@@ -169,6 +170,8 @@ export class AppComponent {
         console.log(movie);
       });
     });
+    // Get movies from asp.net core web api
+    this.http.get<any[]>('api/movies').subscribe(movies => {this.movies = movies;});
   }
   sortingOptions = ['id', 'popularity (increasing)', 'popularity (decreasing)',
     'budget (increasing)', 'budget (decreasing)', 'revenue (increasing)',
